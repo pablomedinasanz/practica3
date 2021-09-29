@@ -1,17 +1,14 @@
-import java.io.IOException;
 import java.util.Scanner;
 
 public class programaRandom {
+
+    public programaRandom() {
+
+    }
+
     public static void main(String[] args) {
 
-
-        ProcessBuilder procesoHijo = new ProcessBuilder("Java");
-        try {
-            Process processSon = procesoHijo.start();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        generarRandom();
 
     }
 
@@ -22,6 +19,8 @@ public class programaRandom {
         for (int i = 0; i < inPut.length(); i++) {
             generarRandom();
         }
+
+        sc.close();
 
     }
 
