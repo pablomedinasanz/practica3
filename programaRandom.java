@@ -4,15 +4,8 @@ import java.util.Scanner;
 public class programaRandom {
     public static void main(String[] args) {
 
-        ProcessBuilder procesoPadre = new ProcessBuilder("leerEntrada()");
-        try {
-            Process processFather = procesoPadre.start();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
 
-        ProcessBuilder procesoHijo = new ProcessBuilder("generarRandom()");
+        ProcessBuilder procesoHijo = new ProcessBuilder("Java");
         try {
             Process processSon = procesoHijo.start();
         } catch (IOException e) {
