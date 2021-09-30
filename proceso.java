@@ -11,13 +11,11 @@ public class proceso {
         try {
 
             Process p = procesoHijo.start();
-            // BufferedReader reader = new BufferedReader(new
-            // InputStreamReader(p.getInputStream()));
 
             InputStreamReader reader = new InputStreamReader(p.getInputStream());
             BufferedReader bf = new BufferedReader(reader);
 
-            String muestra = bf.readLine().toString();
+            String muestra = bf.readLine();
             System.out.println(muestra);
 
             // String line;
