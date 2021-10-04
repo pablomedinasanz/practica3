@@ -22,9 +22,11 @@ public class procesoPadre {
         String input = sc.nextLine();
 
         boolean soloTexto = contieneSoloLetras(input);
-        while (soloTexto == true) {
 
-            while (!"fin".equalsIgnoreCase(input) && soloTexto == true) {
+        while (!"fin".equalsIgnoreCase(input)) {
+
+            while (soloTexto == true && !"fin".equalsIgnoreCase(input)) {
+
                 // muestra por teclado cuántos números se van a imprirmir
                 System.out.println("Se van a imprimir " + input.length() + " números.");
 
@@ -33,27 +35,28 @@ public class procesoPadre {
                 for (int i = 0; i < input.length(); i++) {
 
                     creaciónDeProcesoHijo();
-
                 }
-                // vuelve a pedir una palabra
+
                 System.out.println("\n" + "\n" + "Introduzca una palabra: ");
                 input = sc.nextLine();
+                soloTexto = contieneSoloLetras(input);
+
             }
 
-            System.out.println("FIN DEL PROGRAMA");
+            if (input.equalsIgnoreCase("fin")) {
 
-            sc.close();
+            } else {
 
+                System.out.println("Ha instroducido algún carácter inválido, las palabras está formadas por LETRAS");
+                System.out.println("Vuelve a introducir una palabra, anda: ");
+                input = sc.nextLine();
+                soloTexto = contieneSoloLetras(input);
+            }
         }
-        System.out.println("Ha introducido caracteres inválidos");
-        System.out.println("Introduzca una palabra, por favor: ");
-        input = sc.nextLine();
 
-        soloTexto = contieneSoloLetras(input);
+        System.out.println("FIN DEL PROGRAMA");
 
-        // mientras la palabra no valga "fin" ejecuta el proceso hijo y pide una nueva
-        // palabra
-
+        sc.close();
     }
 
     // método que crea el proceso hijo que genera un número aleatorio
