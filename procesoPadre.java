@@ -21,27 +21,38 @@ public class procesoPadre {
         System.out.println("Introduzca una palabra: ");
         String input = sc.nextLine();
 
+        boolean soloTexto = contieneSoloLetras(input);
+        while (soloTexto == true) {
+
+            while (!"fin".equalsIgnoreCase(input) && soloTexto == true) {
+                // muestra por teclado cuántos números se van a imprirmir
+                System.out.println("Se van a imprimir " + input.length() + " números.");
+
+                // bucle que generará tantos números randoms como caracteres tenga la palabra
+                // ejecutando el proceso hijo
+                for (int i = 0; i < input.length(); i++) {
+
+                    creaciónDeProcesoHijo();
+
+                }
+                // vuelve a pedir una palabra
+                System.out.println("\n" + "\n" + "Introduzca una palabra: ");
+                input = sc.nextLine();
+            }
+
+            System.out.println("FIN DEL PROGRAMA");
+
+            sc.close();
+
+        }
+        System.out.println("Ha introducido caracteres inválidos");
+        System.out.println("Introduzca una palabra, por favor: ");
+        input = sc.nextLine();
+
+        soloTexto = contieneSoloLetras(input);
+
         // mientras la palabra no valga "fin" ejecuta el proceso hijo y pide una nueva
         // palabra
-        while (!"fin".equalsIgnoreCase(input)) {
-            // muestra por teclado cuántos números se van a imprirmir
-            System.out.println("Se van a imprimir " + input.length() + " números.\n");
-
-            // bucle que generará tantos números randoms como caracteres tenga la palabra
-            // ejecutando el proceso hijo
-            for (int i = 0; i < input.length(); i++) {
-
-                creaciónDeProcesoHijo();
-
-            }
-            // vuelve a pedir una palabra
-            System.out.println("\n" + "Introduzca una palabra: ");
-            input = sc.nextLine();
-        }
-
-        System.out.println("FIN DEL PROGRAMA");
-
-        sc.close();
 
     }
 
@@ -71,5 +82,16 @@ public class procesoPadre {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public static boolean contieneSoloLetras(String input) {
+        for (int x = 0; x < input.length(); x++) {
+            char c = input.charAt(x);
+            // Si no está entre a y z, ni entre A y Z, devuelve falso
+            if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
