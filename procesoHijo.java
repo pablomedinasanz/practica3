@@ -1,7 +1,7 @@
 
 public class procesoHijo {
 
-    public procesoHijo() {
+    public procesoHijo() { // PROCESO QUE GENERA UN NÚMERO ALEATORIO
 
     }
 

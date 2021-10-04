@@ -24,14 +24,18 @@ public class procesoPadre {
         // mientras la palabra no valga "fin" ejecuta el proceso hijo y pide una nueva
         // palabra
         while (!"fin".equalsIgnoreCase(input)) {
-
+            // muestra por teclado cuántos números se van a imprirmir
             System.out.println("Se van a imprimir " + input.length() + " números.\n");
 
+            // bucle que generará tantos números randoms como caracteres tenga la palabra
+            // ejecutando el proceso hijo
             for (int i = 0; i < input.length(); i++) {
 
                 creaciónDeProcesoHijo();
+
             }
-            System.out.println("Introduzca una palabra: ");
+            // vuelve a pedir una palabra
+            System.out.println("\n" + "Introduzca una palabra: ");
             input = sc.nextLine();
         }
 
@@ -44,21 +48,24 @@ public class procesoPadre {
     // método que crea el proceso hijo que genera un número aleatorio
     public static void creaciónDeProcesoHijo() {
 
+        // se crea el proceso listo
         ProcessBuilder procesoHijo = new ProcessBuilder();
-        procesoHijo.command("powershell.exe", "/c", "java src\\procesoHijo.java");
+        procesoHijo.command("powershell.exe", "/c", "java src\\procesoHijo.java"); // se ejecutará a través de la
+                                                                                   // powershell el programa hijo
         try {
 
+            // se inicia el proceso y se va guardando en un buffer
             Process p = procesoHijo.start();
 
             InputStreamReader reader = new InputStreamReader(p.getInputStream());
             BufferedReader bf = new BufferedReader(reader);
-
+            // se lee el buffer y se imprime
             muestra = bf.readLine();
-            System.out.println("Número random:");
-            System.out.println(muestra);
+            // System.out.println("Número random:");
+            System.out.print(muestra);
 
             int exitCode = p.waitFor();
-            System.out.println("Exited with error code: " + exitCode + "\n");
+            // System.out.println("Exited with error code: " + exitCode + "\n");
 
         } catch (IOException | InterruptedException e) {
             // TODO Auto-generated catch block
